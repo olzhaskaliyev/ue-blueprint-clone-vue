@@ -1,16 +1,13 @@
 <script setup lang="ts">
-	import type { Node } from "@/interfaces/blueprint";
+	import type { INode } from "@/interfaces/blueprint";
 
 	const props = defineProps<{
-		node: Node;
+		node: INode;
 	}>();
 </script>
 
 <template>
-	<div
-		class="absolute cursor-grab rounded-lg border border-neutral-600 px-4 py-2"
-		draggable="true"
-	>
+	<div class="rounded-lg border border-neutral-600 px-4 py-2">
 		{{ props.node.title }}
 	</div>
 </template>

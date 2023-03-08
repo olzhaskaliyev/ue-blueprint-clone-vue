@@ -1,20 +1,27 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-import type { Node } from "@/interfaces/blueprint";
+import type { INode } from "@/interfaces/blueprint";
 
 export const useBlueprintStore = defineStore("blueprint", () => {
-	const availableNodes = ref<Node[]>([
+	const availableNodes = ref<INode[]>([
 		{
 			title: "Number",
 		},
-	]);
-
-	const sceneNodes = ref<Node[]>([
 		{
-			title: "Number",
+			title: "String",
 		},
 	]);
 
-	return { availableNodes, sceneNodes };
+	const sceneNodes = ref<INode[]>([
+		{
+			title: "Number",
+			posX: 250,
+			posY: 250,
+		},
+	]);
+
+	const draggedNewNode = ref<INode | null>(null);
+
+	return { availableNodes, sceneNodes, draggedNewNode };
 });
