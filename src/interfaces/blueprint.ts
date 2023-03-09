@@ -1,5 +1,13 @@
+type NodeTypes = "number" | "string";
+
 export interface INode {
-	title: string;
-	posX?: number;
-	posY?: number;
+	type: NodeTypes;
+}
+
+export interface ISceneNode extends INode {
+	id: string;
+	x?: number;
+	y?: number;
+	in?: string;
+	out?: string;
 }

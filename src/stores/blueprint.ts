@@ -1,23 +1,35 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-import type { INode } from "@/interfaces/blueprint";
+import type { INode, ISceneNode } from "@/interfaces/blueprint";
 
 export const useBlueprintStore = defineStore("blueprint", () => {
 	const availableNodes = ref<INode[]>([
 		{
-			title: "Number",
+			type: "number",
 		},
 		{
-			title: "String",
+			type: "string",
 		},
 	]);
 
-	const sceneNodes = ref<INode[]>([
+	const firstNodeId = self.crypto.randomUUID();
+	const secondNodeId = self.crypto.randomUUID();
+
+	const sceneNodes = ref<ISceneNode[]>([
 		{
-			title: "Number",
-			posX: 250,
-			posY: 250,
+			id: firstNodeId,
+			type: "number",
+			x: 150,
+			y: 150,
+			out: secondNodeId,
+		},
+		{
+			id: secondNodeId,
+			type: "number",
+			x: 350,
+			y: 350,
+			in: firstNodeId,
 		},
 	]);
 
